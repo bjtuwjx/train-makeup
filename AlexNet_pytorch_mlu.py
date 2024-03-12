@@ -1,4 +1,5 @@
 import torch
+import torch_mlu
 import torch.nn as nn
 import torch.functional as F
 import torchvision
@@ -86,7 +87,7 @@ if __name__ == '__main__':
     
     time_start = time.time()
 
-    device = torch.device('mlu:0' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('mlu:0' if torch.mlu.is_available() else 'cpu')
 
     batchSize = 64  
     normalize = transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5]) 
